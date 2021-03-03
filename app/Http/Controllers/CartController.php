@@ -43,4 +43,13 @@ class CartController extends Controller
             'cart_items' => Cart::where('generated_cart_id', Cookie::get('generated_cart_id'))->get()
         ]);
     }
+    function updatecart(Request $request){
+        print_r($request->all());
+        foreach ($request->cart_amount as $cart_id => $cart_amount) {
+            Cart::find($cart_id)->update([
+                'cart_amount' => $cart_amount
+            ]);
+        }
+        return back()->with('cartstatus', 'Product added to cart successfully !!');
+    }
 }

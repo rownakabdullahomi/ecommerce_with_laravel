@@ -7,6 +7,7 @@ use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CuponController;
 
 
 Route::get('/', [FrontendController::class, 'index']);
@@ -47,4 +48,8 @@ Route::post('product/insert', [ProductController::class, 'insert']);
 Route::post('add/to/cart', [CartController::class, 'addtocart']);
 Route::get('cart/delete/{cart_id}', [CartController::class, 'cartdelete']);
 Route::get('cart', [CartController::class, 'cart']);
+Route::post('update/cart', [CartController::class, 'updatecart']);
+
+Route::get('cupon', [CuponController::class, 'index'])->name('roadofcoupon');
+Route::post('coupon/insert', [CuponController::class, 'insert'])->name('roadofcouponinsert');
 
